@@ -1,0 +1,30 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Release Please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          release-type: python
+
+      - name: Checkout Repository
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
