@@ -19,6 +19,7 @@ class Settings(BaseSettings):
 
     UV_NO_DEV: int = 0
 
+    @property
     @computed_field
     def DATABASE_URL(self) -> str:
         dsn = PostgresDsn.build(
