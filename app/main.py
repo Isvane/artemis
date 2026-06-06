@@ -1,10 +1,24 @@
+from contextlib import asynccontextmanager
+
+import httpx
 from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database.connection import get_db
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.client = httpx.AsyncClient(timeout=10.0)
+    yield
+    await app.state.client.aclose()
+
+
+app = FastAPI(
+    title="ARTEMIS",
+    lifespan=lifespan,
+)
 
 
 @app.get("/")
