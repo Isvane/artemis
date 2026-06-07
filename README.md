@@ -1,31 +1,16 @@
-# artemis
+# Artemis
 
-A project created with FastAPI CLI.
+Despite the name, **Artemis** has absolutely nothing to do with space exploration. It is a dedicated, collaborative backend sandbox built to experiment with modern web development patterns, asynchronous architectures, containerization, and automated CI/CD workflows.
 
-## Quick Start
+---
 
-### Start the development server
+## Tech Stack
 
-```bash
-uv run fastapi dev
-```
+* **Framework:** FastAPI
+* **Database & ORM:** PostgreSQL with SQLAlchemy 2.0
+* **Migrations:** Alembic configured for an asynchronous database environment.
+* **Containerization:** Multi-stage `Dockerfile` and `compose.yml` for streamlined development.
 
-Visit http://localhost:8000
+## CI/CD & Versioning 
 
-### Deploy to FastAPI Cloud
-
-> FastAPI Cloud is currently in private beta. Join the waitlist at https://fastapicloud.com
-
-```bash
-uv run fastapi deploy
-```
-
-## Project Structure
-
-- `main.py` - Your FastAPI application
-- `pyproject.toml` - Project dependencies
-
-## Learn More
-
-- [FastAPI Documentation](https://fastapi.tiangolo.com)
-- [FastAPI Cloud](https://fastapicloud.com)
+This project uses Conventional Commits to automatically manage versioning and changelogs.
