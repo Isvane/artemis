@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, status
+from prometheus_fastapi_instrumentator import Instrumentator
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -19,6 +20,8 @@ app = FastAPI(
     title="ARTEMIS",
     lifespan=lifespan,
 )
+
+Instrumentator().instrument(app).expose(app)
 
 
 @app.get("/")
