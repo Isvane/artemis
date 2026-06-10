@@ -11,7 +11,9 @@ services:
     environment:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${POSTGRES_DB}
     volumes:
-      - ./app:/workspace/app:ro
+      - ./app:/workspace/app
+      - ./alembic:/workspace/alembic
+      - ./alembic.ini:/workspace/alembic.ini
     depends_on:
       db:
         condition: service_healthy
