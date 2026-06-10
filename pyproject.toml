@@ -10,6 +10,19 @@ dependencies = [
     "sqlalchemy>=2.0.50",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra -q --cov=app --cov-report=term-missing --cov-fail-under=80"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["."]
 
 [tool.alembic]
 
@@ -94,4 +107,3 @@ prepend_sys_path = [
 # type = "exec"
 # executable = "ruff"
 # options = "check --fix REVISION_SCRIPT_FILENAME"
-
