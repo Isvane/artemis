@@ -6,6 +6,7 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api.v1 import project
 from app.database.connection import get_db
 
 
@@ -41,3 +42,6 @@ async def health_check(db: AsyncSession = Depends(get_db)):
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail=f"Database connection failed: {str(e)}",
         )
+
+
+app.include_router(project.router, prefix="/api/v1")

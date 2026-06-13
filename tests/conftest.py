@@ -10,6 +10,7 @@ from app.main import app as fastapi_app
 @pytest.fixture
 def mock_db():
     session = AsyncMock()
+    session.add = MagicMock()
     mock_result = MagicMock()
     mock_result.scalar.return_value = 1
     session.execute.return_value = mock_result
