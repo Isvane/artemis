@@ -2,12 +2,9 @@ from datetime import datetime
 from typing import List
 
 from sqlalchemy import ForeignKey, String
-from sqlalchemy.ext.asyncio import AsyncAttrs
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-
-class Base(AsyncAttrs, DeclarativeBase):
-    pass
+from app.models.base import Base
 
 
 class Project(Base):
