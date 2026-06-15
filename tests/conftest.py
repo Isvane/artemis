@@ -5,6 +5,8 @@ from httpx import ASGITransport, AsyncClient
 
 from app.database.connection import get_db
 from app.main import app as fastapi_app
+from app.models.project import Job, Project  # noqa: F401
+from app.models.user import User  # noqa: F401
 
 
 @pytest.fixture
