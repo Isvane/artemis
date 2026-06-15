@@ -8,6 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.v1 import project
 from app.database.connection import get_db
+from app.models.user import User  # noqa: F401
 
 
 @asynccontextmanager
