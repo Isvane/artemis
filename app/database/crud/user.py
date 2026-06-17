@@ -1,5 +1,5 @@
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.future import select
 
 from app.core.security import get_pass_hash
 from app.models.user import User
@@ -22,8 +22,9 @@ async def update_user(db: AsyncSession, db_user: User, user: UserUpdate) -> User
 
     for key, value in update_data.items():
         if key == "password":
-            hashed_value = get_pass_hash(value)
-            setattr(db_user, "hashed_password", hashed_value)
+            if value:
+                hashed_value = get_pass_hash(value)
+                setattr(db_user, "hashed_password", hashed_value)
         else:
             setattr(db_user, key, value)
 
