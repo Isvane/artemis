@@ -46,6 +46,7 @@ class UserCreate(UserBase):
 class UserUpdate(BaseModel):
     username: Username | None = None
     email: EmailStr | None = None
+    password: Password | None = None
 
 
 class UserResponse(UserBase):

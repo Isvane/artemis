@@ -11,8 +11,8 @@ class Settings(BaseSettings):
         env_file=BASE_DIR / ".env", env_file_encoding="utf-8", extra="ignore"
     )
 
-    SECRET_KEY: str
-    ALGORITHM: str
+    SECRET_KEY: str = "fallback-development-key-never-use-in-prod"
+    ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     POSTGRES_USER: str = "postgres"
