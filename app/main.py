@@ -6,7 +6,7 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.api.v1 import project
+from app.api.v1 import auth, project
 from app.database.connection import get_db
 from app.models.user import User  # noqa: F401
 
@@ -46,3 +46,4 @@ async def health_check(db: AsyncSession = Depends(get_db)):
 
 
 app.include_router(project.router, prefix="/api/v1")
+app.include_router(auth.router, prefix="/api/v1")
