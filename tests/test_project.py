@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import status
 
@@ -15,7 +15,8 @@ async def test_create_project_success(client, mock_db):
             for i, job in enumerate(instance.jobs):
                 job.id = i + 1
                 job.project_id = 99
-                job.created_at = datetime.utcnow()
+                job.created_at = datetime.now(timezone.utc)
+                job.updated_at = datetime.now(timezone.utc)
 
     mock_db.refresh.side_effect = mock_refresh
 
